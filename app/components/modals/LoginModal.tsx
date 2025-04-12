@@ -55,7 +55,7 @@ const LoginModal = () => {
             Submit
           </Button>
           <hr className="border-gray-200" />
-          <Button variant="outline">
+          <Button variant="outline" onClick={() => signIn("google")}>
             <FcGoogle /> Continue with Google
           </Button>
           <Button variant="outline" onClick={() => signIn("github")}>
