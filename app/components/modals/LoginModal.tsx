@@ -58,7 +58,7 @@ const LoginModal = () => {
           <Button variant="outline">
             <FcGoogle /> Continue with Google
           </Button>
-          <Button variant="outline">
+          <Button variant="outline" onClick={() => signIn("github")}>
             <AiFillGithub />
             Continue with Github
           </Button>

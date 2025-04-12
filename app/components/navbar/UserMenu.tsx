@@ -6,9 +6,9 @@ import useToggle from "@/app/hooks/useToggle";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
-import { User } from "@prisma/client";
 import { FC } from "react";
 import { signOut } from "next-auth/react";
+import { User } from "@/app/generated/prisma";
 
 interface UserMenuProps {
   currentUser?: User;

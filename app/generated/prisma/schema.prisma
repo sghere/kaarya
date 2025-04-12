@@ -4,7 +4,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb" // or "mysql" or "sqlite" depending on your setup
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
@@ -72,20 +72,23 @@ model Category {
 }
 
 model Account {
-  id                String  @id @default(uuid()) @map("_id")
-  userId            String
-  type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String?
-  access_token      String?
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String?
-  session_state     String?
+  id                       String  @id @default(uuid()) @map("_id")
+  userId                   String
+  type                     String
+  provider                 String
+  providerAccountId        String
+  refresh_token            String?
+  access_token             String?
+  expires_at               Int?
+  token_type               String?
+  scope                    String?
+  id_token                 String?
+  session_state            String?
+  refresh_token_expires_in Int?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
 }
 
 model Session {

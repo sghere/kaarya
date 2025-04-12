@@ -11,6 +11,7 @@ import { Input } from "../Input";
 import { Button } from "../Button";
 import toast from "react-hot-toast";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
@@ -57,7 +58,7 @@ const RegisterModal = () => {
           <Button variant="outline">
             <FcGoogle /> Continue with Google
           </Button>
-          <Button variant="outline">
+          <Button variant="outline" onClick={() => signIn("github")}>
             <AiFillGithub />
             Continue with Github
           </Button>

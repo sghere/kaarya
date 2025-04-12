@@ -1,4 +1,4 @@
-import { User } from "@prisma/client";
+import { User } from "@/app/generated/prisma";
 import Container from "../Container";
 import UserMenu from "./UserMenu";
 import { FC } from "react";
@@ -8,6 +8,7 @@ interface NavbarProps {
 }
 
 const Navbar: FC<NavbarProps> = ({ currentUser }) => {
+  console.log({ currentUser });
   return (
     <div className="w-full bg-white fixed">
       <div className="NavLogo py-4 border-b-[1px]">
