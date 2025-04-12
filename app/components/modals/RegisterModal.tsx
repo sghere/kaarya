@@ -9,6 +9,8 @@ import axios from "axios";
 import Modal from "./Modal";
 import { Input } from "../Input";
 import { Button } from "../Button";
+import toast from "react-hot-toast";
+import Link from "next/link";
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
@@ -34,7 +36,7 @@ const RegisterModal = () => {
         registerModal.onClose();
       })
       .catch((err) => {
-        console.log(err);
+        toast.error("Something went wrong!");
       })
       .finally(() => {
         setIsLoading(false);
@@ -42,11 +44,10 @@ const RegisterModal = () => {
   };
   return (
     <Modal
-      onSubmit={handleSubmit(onSubmit)}
       onClose={registerModal.onClose}
       disabled={isLoading}
       isOpen={registerModal.isOpen}
-      title="Login"
+      title="Sign Up"
       footer={
         <>
           <Button type="submit" onClick={handleSubmit(onSubmit)}>
@@ -54,12 +55,18 @@ const RegisterModal = () => {
           </Button>
           <hr className="border-gray-200" />
           <Button variant="outline">
-            <FcGoogle /> Google
+            <FcGoogle /> Continue with Google
           </Button>
           <Button variant="outline">
             <AiFillGithub />
-            Github
+            Continue with Github
           </Button>
+          <div className="flex">
+            Already have an account ?
+            <div className="text-sky-600 cursor-pointer hover:text-sky-800 pl-2">
+              Log in
+            </div>
+          </div>
         </>
       }
     >

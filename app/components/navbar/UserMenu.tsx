@@ -5,10 +5,12 @@ import Avatar from "../Avatar";
 import useToggle from "@/app/hooks/useToggle";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
+import useLoginModal from "@/app/hooks/useLoginModal";
 
 const UserMenu = () => {
   const [isOpen, toggleOpen] = useToggle();
   const { onOpen } = useRegisterModal();
+  const { onOpen: onLoginOpen } = useLoginModal();
   return (
     <div className="relative">
       <div
@@ -32,7 +34,7 @@ const UserMenu = () => {
         <div className="absolute w-[20ch] top-12 right-0 bg-white  rounded-xl border-gray-200 border-[1px]">
           <div className="grid gap-2">
             <>
-              <MenuItem>Login</MenuItem>
+              <MenuItem onClick={onLoginOpen}>Login</MenuItem>
               <MenuItem onClick={onOpen}>Signup </MenuItem>
             </>
           </div>
