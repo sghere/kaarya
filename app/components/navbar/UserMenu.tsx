@@ -18,6 +18,7 @@ const UserMenu: FC<UserMenuProps> = ({ currentUser }) => {
   const [isOpen, toggleOpen] = useToggle();
   const { onOpen } = useRegisterModal();
   const { onOpen: onLoginOpen } = useLoginModal();
+  const avatar = currentUser?.image;
   return (
     <div className="relative">
       <div
@@ -34,7 +35,7 @@ const UserMenu: FC<UserMenuProps> = ({ currentUser }) => {
       >
         <AiOutlineMenu />
         <div className="hidden md:block">
-          <Avatar />
+          <Avatar src={avatar} />
         </div>
       </div>
       {isOpen && (
