@@ -1,7 +1,7 @@
-import React from "react";
+import WalletCard from "./WalletCard";
 
-const Wallet = () => {
-  return <div>Wallet</div>;
+const Wallet = async () => {
+  return <WalletCard />;
 };
 
 export default Wallet;

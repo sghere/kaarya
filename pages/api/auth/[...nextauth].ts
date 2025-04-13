@@ -5,6 +5,7 @@ import GithubProvider from "next-auth/providers/github";
 import prisma from "@/app/lib/prisma";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
+import { authEvents } from "./authEvents";
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -68,6 +69,9 @@ export const authOptions: AuthOptions = {
   pages: {
     signIn: "/",
   },
+  events: authEvents,
+
+  // callbacks: authCallbacks,
   debug: process.env.NODE_ENV === "development",
   session: {
     strategy: "jwt",

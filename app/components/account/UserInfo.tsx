@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 const UserInfo = () => {
   const { user } = useUser();
   const router = useRouter();
-
   return (
     <div className="p-6 flex justify-center border border-gray-50 rounded shadow-sm items-center gap-4">
       <Avatar src={user?.image} size="lg" />

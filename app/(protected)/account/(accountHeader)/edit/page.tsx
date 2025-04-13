@@ -7,7 +7,6 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import getCurrentUser from "@/app/actions/getCurrentUser";
 
 const EditProfile = () => {
   const router = useRouter();

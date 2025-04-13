@@ -18,7 +18,6 @@ const Avatar: FC<AvatarProps> = ({ src = null, size = "sm" }) => {
         return 30;
     }
   }, [size]);
-  console.log({ size });
   return (
     <Image
       alt="Avatar"

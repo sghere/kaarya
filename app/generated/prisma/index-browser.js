@@ -123,6 +123,20 @@ exports.Prisma.UserScalarFieldEnum = {
   categoryId: 'categoryId'
 };
 
+exports.Prisma.WalletScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  balance: 'balance'
+};
+
+exports.Prisma.Transaction_logsScalarFieldEnum = {
+  id: 'id',
+  walletId: 'walletId',
+  amount: 'amount',
+  reason: 'reason',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.GigScalarFieldEnum = {
   id: 'id',
   customerId: 'customerId',
@@ -139,12 +153,6 @@ exports.Prisma.GigRequestScalarFieldEnum = {
   requesterId: 'requesterId',
   createdAt: 'createdAt',
   status: 'status'
-};
-
-exports.Prisma.WalletScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  balance: 'balance'
 };
 
 exports.Prisma.CategoryScalarFieldEnum = {
@@ -200,9 +208,10 @@ exports.RequestStatus = exports.$Enums.RequestStatus = {
 
 exports.Prisma.ModelName = {
   User: 'User',
+  Wallet: 'Wallet',
+  transaction_logs: 'transaction_logs',
   Gig: 'Gig',
   GigRequest: 'GigRequest',
-  Wallet: 'Wallet',
   Category: 'Category',
   Account: 'Account',
   Session: 'Session'

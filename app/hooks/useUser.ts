@@ -1,14 +1,14 @@
 import { create } from "zustand";
 import { User } from "../generated/prisma";
 
-interface LoginModalStore {
+interface UserStore {
   user: User | null;
   setUser: (user: User | null) => void;
 }
 
-const useLoginModal = create<LoginModalStore>((set) => ({
+const useUser = create<UserStore>((set) => ({
   user: null,
   setUser: (user) => set({ user }),
 }));
 
-export default useLoginModal;
+export default useUser;
