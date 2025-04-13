@@ -22,10 +22,10 @@ const BottomNavbar: FC<BottomNavbarProps> = ({ currentUser }) => {
       <MenuItem href="/">
         <GoHome size={30} />
       </MenuItem>
-      <MenuItem href="mygigs">
+      <MenuItem href="/gigs">
         <GoBriefcase size={30} />
       </MenuItem>
-      <MenuItem>
+      <MenuItem href="/gigs/add">
         <GoPlus size={30} />
       </MenuItem>
       <MenuItem>
