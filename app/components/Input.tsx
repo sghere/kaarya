@@ -19,14 +19,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const { id, errors } = props;
 
     return (
-      <>
+      <div className="w-full">
         <input
           // ref={ref}.
           {...props}
           {...register(id, rules)}
           type={type}
           className={cn(
-            "p-4 rounded-xl border border-gray-200 outline-none focus:outline-none",
+            "p-4 rounded-xl w-full border border-gray-200 outline-none focus:outline-none",
             { "border-red-600 border-2 text-red-600": errors[id] },
             className
           )}
@@ -35,7 +35,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {errors[id]?.message && (
           <p className="text-red-600">{String(errors[id].message)}</p>
         )}
-      </>
+      </div>
     );
   }
 );

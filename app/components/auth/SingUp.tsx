@@ -9,6 +9,7 @@ import { Button } from "../Button";
 import { FcGoogle } from "react-icons/fc";
 import { AiFillGithub } from "react-icons/ai";
 import { signIn } from "next-auth/react";
+import { cn } from "@/app/lib/utils";
 
 const SingUp = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -42,7 +43,11 @@ const SingUp = () => {
   };
 
   return (
-    <div className="size-full grid place-items-center">
+    <div
+      className={cn("size-full grid place-items-center", {
+        "disbaled pointer-events-none": isLoading,
+      })}
+    >
       <div className="grid gap-4 p-4 w-full sm:w-[400px]">
         <div className="Heading">
           <h3 className="font-bold text-3xl">Welcome to Kaarya</h3>
@@ -101,7 +106,10 @@ const SingUp = () => {
         </Button>
         <div className="flex">
           Already have an account ?
-          <div className="text-sky-600 cursor-pointer hover:text-sky-800 pl-2">
+          <div
+            className="text-sky-600 cursor-pointer hover:text-sky-800 pl-2"
+            onClick={() => router.push("/login")}
+          >
             Log in
           </div>
         </div>

@@ -8,9 +8,8 @@ interface NavbarProps {
 }
 
 const Navbar: FC<NavbarProps> = ({ currentUser }) => {
-  console.log({ currentUser });
   return (
-    <div className="w-full bg-white fixed">
+    <div className={"hidden sm:block w-full bg-white fixed"}>
       <div className="NavLogo py-4 border-b-[1px]">
         <Container>
           <div className="flex items-center justify-between">

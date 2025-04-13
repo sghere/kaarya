@@ -19,30 +19,46 @@ export const authOptions: AuthOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        Email: { label: "Email", type: "text" },
-        Password: { label: "Password", type: "password" },
+        name: { label: "Name", type: "text" },
+        email: { label: "Email", type: "text" },
+        // number: { label: "Number", type: "text" },
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.Email || !credentials?.Password) {
+        if (
+          !credentials?.name ||
+          !credentials?.email ||
+          // !credentials?.number ||
+          !credentials?.password
+        ) {
           throw new Error("Invalid credentials");
         }
 
         const user = await prisma.user.findUnique({
-          where: { email: credentials.Email },
+          where: { email: credentials.email },
         });
 
+        if (!user) {
+          throw new Error("No user found");
+        }
         if (!user || !user.hashedPassword) {
           throw new Error("No user found");
         }
 
         const isValid = await bcrypt.compare(
-          credentials.Password,
+          credentials.password,
           user.hashedPassword
         );
 
         if (!isValid) {
           throw new Error("Invalid password");
         }
+        // if (
+        //   user.name !== credentials.name ||
+        //   user.number !== credentials.number
+        // ) {
+        //   throw new Error("User data mismatch");
+        // }
 
         return user;
       },
