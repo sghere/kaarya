@@ -17,7 +17,7 @@ interface InputProps extends React.ComponentProps<"input"> {
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, required, type, rules, register, ...props }, ref) => {
     const { id, errors } = props;
-    console.log(errors[id], { resgiter: { ...register(id, { required }) } });
+
     return (
       <>
         <input
