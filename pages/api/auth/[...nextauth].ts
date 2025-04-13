@@ -18,20 +18,14 @@ export const authOptions: AuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
     CredentialsProvider({
-      name: "Credentials",
+      name: "credentials",
       credentials: {
-        name: { label: "Name", type: "text" },
-        email: { label: "Email", type: "text" },
-        // number: { label: "Number", type: "text" },
-        password: { label: "Password", type: "password" },
+        email: { label: "email", type: "text" },
+        password: { label: "password", type: "password" },
       },
       async authorize(credentials) {
-        if (
-          !credentials?.name ||
-          !credentials?.email ||
-          // !credentials?.number ||
-          !credentials?.password
-        ) {
+        console.log({ credentials });
+        if (!credentials?.email || !credentials?.password) {
           throw new Error("Invalid credentials");
         }
 
@@ -54,12 +48,6 @@ export const authOptions: AuthOptions = {
         if (!isValid) {
           throw new Error("Invalid password");
         }
-        // if (
-        //   user.name !== credentials.name ||
-        //   user.number !== credentials.number
-        // ) {
-        //   throw new Error("User data mismatch");
-        // }
 
         return user;
       },

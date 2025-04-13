@@ -5,6 +5,7 @@ import "../globals.css";
 import { FC, ReactNode } from "react";
 import getCurrentUser from "../actions/getCurrentUser";
 import { redirect } from "next/navigation";
+import ToasterProvider from "../providers/ToasterProvider";
 
 const font = Montserrat({
   // subsets: ["latin"],
@@ -26,7 +27,10 @@ const layout: FC<AuthLayoutProps> = async ({ children }) => {
   }
   return (
     <html lang="en">
-      <body className={font.className}>{children}</body>
+      <body className={font.className}>
+        <ToasterProvider />
+        {children}
+      </body>
     </html>
   );
 };

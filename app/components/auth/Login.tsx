@@ -18,14 +18,26 @@ const Login = () => {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      Email: "",
-      Password: "",
+      email: "",
+      password: "",
     },
   });
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
-    signIn("credentials", { ...data, redirect: true, callbackUrl: "/" });
+    console.log({ data });
+    signIn("credentials", { ...data, redirect: false })
+      .then((res) => {
+        if (res?.ok) {
+          toast.success("Logged in successfully");
+          router.push("/");
+        } else {
+          toast.error(res?.error || "Some error");
+        }
+      })
+      .catch((err) => {
+        toast.error("Invalid Creds");
+      });
   };
   return (
     <div className="size-full grid place-items-center">
@@ -36,7 +48,7 @@ const Login = () => {
         </div>
         <div className="Form grid gap-4 py-6">
           <Input
-            id="Email"
+            id="email"
             rules={{
               required: "Email is required",
               pattern: {
@@ -55,7 +67,7 @@ const Login = () => {
                 message: "Password must be at least 6 characters",
               },
             }}
-            id="Password"
+            id="password"
             type="password"
             errors={errors}
             register={register}
