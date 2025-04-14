@@ -44,9 +44,8 @@ export async function GET() {
     // Return the wallet balance
     return NextResponse.json({ balance: wallet.balance });
   } catch (error) {
-    console.error(error);
     return NextResponse.json(
-      { message: "Error retrieving wallet balance", error: error.message },
+      { message: "Error retrieving wallet balance", error },
       { status: 500 }
     );
   }

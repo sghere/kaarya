@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 import ToasterProvider from "../providers/ToasterProvider";
 
 const font = Montserrat({
-  // subsets: ["latin"],
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {

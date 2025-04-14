@@ -1,3 +1,4 @@
+/* eslint-disable */
 import axios from "axios";
 import { ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";

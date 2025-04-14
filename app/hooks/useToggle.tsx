@@ -1,4 +1,4 @@
-import { MouseEventHandler, useState } from "react";
+import { useState } from "react";
 
 const useToggle = (): [boolean, () => void] => {
   const [isToggled, setIsToggled] = useState(false);

@@ -1,8 +1,15 @@
+import { User } from "next-auth";
 import prisma from "@/app/lib/prisma";
+import { EventCallbacks } from "next-auth";
 
-export const authEvents = {
-  async signIn(message: any) {
+interface Message {
+  user: User;
+}
+
+export const authEvents: Partial<EventCallbacks> = {
+  async signIn(message: Message) {
     const { user } = message;
+    if (!user.email) return;
     const existingUser = await prisma?.user.findUnique({
       where: { email: user.email },
     });

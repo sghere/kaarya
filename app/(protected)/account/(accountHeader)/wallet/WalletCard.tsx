@@ -1,20 +1,17 @@
 "use client";
-import { Button } from "@/app/components/Button";
-import useApiStore from "@/app/hooks/useApiStore";
-import useUser from "@/app/hooks/useUser";
+
+import useApiStore, { StoreValue } from "@/app/hooks/useApiStore";
 import { useEffect } from "react";
-import { BiPlusCircle, BiWallet } from "react-icons/bi";
 import { CiWallet } from "react-icons/ci";
-import { FaPlus } from "react-icons/fa";
-import { GoPlus } from "react-icons/go";
+
 const WalletCard = () => {
   const { wallet, loading, error, fetchData } = useApiStore();
+
+  const balance = wallet?.balance || 0;
 
   useEffect(() => {
     fetchData("/api/wallet", "wallet");
   }, []);
-
-  if (loading) return "Loading...";
 
   if (error) return "Some error";
 
@@ -24,7 +21,7 @@ const WalletCard = () => {
         <CiWallet size={50} className="text-gray-100 rotate-[325deg]" />
         <h3 className="text-5xl font-bold text-primary-50 ">
           <span className="text-2xl font-medium">$</span>
-          {wallet?.balance}
+          {loading ? "Loading..." : balance}
           <span className="text-2xl font-medium text-gray-100">.56</span>
         </h3>
       </div>
