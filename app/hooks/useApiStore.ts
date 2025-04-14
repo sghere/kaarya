@@ -14,6 +14,9 @@ const useApiStore = create<ApiState>((set) => ({
   fetchData: async () => {
     await createAsyncFetch(set, "wallet");
   },
+  setValue: (key: any, value: any) => {
+    set({ [key]: value });
+  },
 }));
 
 export default useApiStore;
