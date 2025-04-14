@@ -7,33 +7,29 @@ import {
   UseFormRegister,
 } from "react-hook-form";
 
-interface InputProps extends React.ComponentProps<"input"> {
-  register?: UseFormRegister<FieldValues>;
-  errors?: FieldErrors;
+interface TextAreaProps extends React.ComponentProps<"textarea"> {
+  register: UseFormRegister<FieldValues>;
+  errors: FieldErrors;
   id: string;
-  rules?: RegisterOptions;
+  rules: RegisterOptions;
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  (
-    { className, required, type, rules, register = () => {}, ...props },
-    ref
-  ) => {
-    const { id, errors = {}, placeholder } = props;
+const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
+  ({ className, required, rules, register, ...props }, ref) => {
+    const { id, errors } = props;
 
     return (
       <div className="w-full">
-        <input
+        <textarea
           // ref={ref}.
           {...props}
           {...register(id, rules)}
-          type={type}
           className={cn(
             "p-4 rounded-xl w-full border border-gray-200 outline-none focus:outline-none",
             { "border-red-600 border-2 text-red-600": errors[id] },
             className
           )}
-          placeholder={placeholder || id}
+          placeholder={id}
         />
         {errors[id]?.message && (
           <p className="text-red-600">{String(errors[id].message)}</p>
@@ -42,6 +38,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     );
   }
 );
-Input.displayName = "Input";
+TextArea.displayName = "TextArea";
 
-export { Input };
+export { TextArea };
