@@ -9,18 +9,24 @@ export async function getSession() {
 const getCurrentUser = async () => {
   try {
     const session = await getSession();
-    if (!session?.user?.email) return null;
+    console.log("🔥 SESSION:", session);
+
+    if (!session?.user?.email) {
+      console.log("❌ No session email");
+      return null;
+    }
 
     const currentUser = await prisma.user.findUnique({
-      where: {
-        email: session.user.email as string,
-      },
+      where: { email: session.user.email },
       include: { wallet: true },
     });
-    if (!currentUser) return null;
-    return currentUser;
+
+    console.log("✅ CURRENT USER:", currentUser);
+
+    return currentUser || null;
   } catch (error) {
-    return console.error(error);
+    console.error("❌ ERROR in getCurrentUser:", error);
+    return null;
   }
 };
 
