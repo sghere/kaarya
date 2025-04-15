@@ -1,3 +1,4 @@
+import { User } from "@prisma/client";
 import Container from "../Container";
 import UserMenu from "./UserMenu";
 import { FC } from "react";

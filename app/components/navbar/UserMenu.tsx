@@ -8,6 +8,7 @@ import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { FC } from "react";
 import { signOut } from "next-auth/react";
+import { User } from "@prisma/client";
 
 interface UserMenuProps {
   currentUser?: User;

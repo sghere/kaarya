@@ -5,6 +5,7 @@ import { FC, ReactNode, useEffect } from "react";
 import useUser from "@/app/hooks/useUser";
 
 import { GoBriefcase, GoHome, GoMail, GoPerson, GoPlus } from "react-icons/go";
+import { User } from "@prisma/client";
 
 interface BottomNavbarProps {
   currentUser: User;
