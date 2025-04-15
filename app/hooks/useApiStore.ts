@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { createAsyncFetch } from "../lib/utils";
-import { Wallet } from "../generated/prisma";
+import { Wallet } from "@prisma/client";
 
 export type StoreValue =
   | string

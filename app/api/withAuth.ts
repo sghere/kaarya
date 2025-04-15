@@ -2,7 +2,6 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { getServerSession } from "next-auth";
 
 import { NextResponse } from "next/server";
-import { User } from "../generated/prisma";
 
 type Handler = (user: User, ...args: any[]) => Promise<Response>;
 

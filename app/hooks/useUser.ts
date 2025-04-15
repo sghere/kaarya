@@ -1,5 +1,5 @@
+import { User } from "@prisma/client";
 import { create } from "zustand";
-import { User } from "../generated/prisma";
 
 interface UserStore {
   user: User | null;

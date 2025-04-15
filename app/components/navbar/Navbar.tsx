@@ -1,4 +1,3 @@
-import { User } from "@/app/generated/prisma";
 import Container from "../Container";
 import UserMenu from "./UserMenu";
 import { FC } from "react";

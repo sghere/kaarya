@@ -1,6 +1,5 @@
 "use client";
 
-import { User } from "@/app/generated/prisma";
 import Link from "next/link";
 import { FC, ReactNode, useEffect } from "react";
 import useUser from "@/app/hooks/useUser";
